@@ -1,0 +1,70 @@
+<div class="main-content">
+  <div class="container-fluid">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="card">
+           <div class="card-header card-header-danger">
+             <div class="row">
+               <div class="col-md-6">
+                 <h4 class="card-title">Select Email Template</h4>
+               </div>
+               <div class="col-md-6">
+                 <button mat-raised-button type="button" class="btn btn-sm btn-danger pull-right">Create new Template</button>
+               </div>
+             </div>
+           </div>
+           <div class="card-body">
+             <form>
+
+               <div class="row">
+                 <div class="col-md-4 offset-md-2">
+                   <mat-form-field class="example-full-width">
+
+                     <mat-select placeholder="Select Mail">
+                       <mat-option *ngFor="let mail of mailTemplate" [value]="mail.title">
+                         {{mail.title}}
+                       </mat-option>
+                     </mat-select>
+                   </mat-form-field>
+                 </div>
+                 <div class="col-md-4">
+                  <button mat-raised-button type="submit" class="btn btn-danger pull-right">Select</button>
+                 </div>
+
+               </div>
+
+
+               <div class="clearfix"></div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-md-12">
+         <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Test Mail</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-8 offset-md-2">
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, eaque.</p>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo maxime corporis porro vitae laudantium quisquam. Et, incidunt? Quo, recusandae nesciunt?</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, aspernatur nobis minima minus atque distinctio impedit, assumenda ex perferendis quidem vitae praesentium alias velit natus necessitatibus. Exercitationem, dicta. Recusandae, consectetur?</p>
+                  <br>
+                  <button mat-raised-button type="button" class="btn btn-danger pull-right">Edit Mail
+                    Template</button>
+                </div>
+
+
+              </div>
+            </div>
+
+         </div>
+       </div>
+     </div>
+
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Lead Search</h4>
+                  </div>
+                  <div class="card-body">
+                      <form>
+                          <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Enter Search Key ">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Enter Search Location">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Enter Radius (KM)" type="number">
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+
+                                  <mat-select placeholder="Email Filter">
+                                    <mat-option *ngFor="let mail of mailOption" [value]="mail.value">
+                                      {{mail.viewValue}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <mat-select placeholder="Website Filter">
+                                    <mat-option *ngFor="let website of websiteOption" [value]="website.value">
+                                      {{website.viewValue}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+
+                              </div>
+                          </div>
+
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Search</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+       <div class="row">
+         <div class="col-md-12">
+           <div class="card">
+             <div class="card-header card-header-danger">
+               <h4 class="card-title ">Search Result</h4>
+             </div>
+             <div class="card-body">
+               <div class="example-container mat-elevation-z8">
+                 <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+                   <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+                   <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+                     GitHub's API rate limit has been reached. It will be reset in one minute.
+                   </div>
+                 </div>
+
+                 <div class="example-table-container">
+
+                   <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="created"
+                     matSortDisableClear matSortDirection="desc">
+                     <!-- Number Column -->
+                     <ng-container matColumnDef="number">
+                       <th mat-header-cell *matHeaderCellDef>#</th>
+                       <td mat-cell *matCellDef="let row">{{row.number}}</td>
+                     </ng-container>
+
+                     <!-- Title Column -->
+                     <ng-container matColumnDef="title">
+                       <th mat-header-cell *matHeaderCellDef>Title</th>
+                       <td mat-cell *matCellDef="let row">{{row.title}}</td>
+                     </ng-container>
+
+                     <!-- State Column -->
+                     <ng-container matColumnDef="state">
+                       <th mat-header-cell *matHeaderCellDef>State</th>
+                       <td mat-cell *matCellDef="let row">{{row.state}}</td>
+                     </ng-container>
+
+                     <!-- Created Column -->
+                     <ng-container matColumnDef="created">
+                       <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                         Created
+                       </th>
+                       <td mat-cell *matCellDef="let row">{{row.created_at | date}}</td>
+                     </ng-container>
+
+                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                   </table>
+                 </div>
+
+                 <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+               </div>
+
+             </div>
+           </div>
+         </div>
+       </div>
+  </div>
+</div>
