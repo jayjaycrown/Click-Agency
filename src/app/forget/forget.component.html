@@ -1,0 +1,54 @@
+
+<nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" >
+            CLICK AGENCY
+         </a>
+      </div>
+    </div>
+        <ul class="navbar-nav ml-auto">
+          <li class="button-container nav-item iframe-extern">
+            <a  routerLink="/login" class="btn  btn-ros   btn-round btn-block" style="background-color: #f44336 !important;">
+              <i class="material-icons">person</i> Login
+            </a>
+          </li>
+        </ul>
+  </nav>
+<div class="page-header header-filter" style="background-image: url('../../../assets/img/kit/inventory.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+            <div class="card card-login card-hidden">
+              <div class="card-heade card-header-primar text-center" style=" background-color: #f44336 !important">
+                <h4 class="card-title" >Forget Password</h4>
+              </div>
+              <div class="card-body ">
+                <span style="color:#f44336;text-align: center;" class="text-center">
+                    <span class="text">Enter the email associated with your account</span>
+                    <br>
+                    <small class="text">we'll email you a link to reset your password</small>
+                </span><br><br>
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                   
+                      <span class="input-group-text">
+                        <i class="material-icons">email</i>
+                      </span>
+                    </div>
+                    <input type="email" [(ngModel)]="email" class="form-control" placeholder="Email...">
+                  </div>
+                </span>
+                <br>
+              </div>
+              
+              <div class="card-footer justify-content-center">
+                <a (click)="navigateToDashboard()" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
