@@ -19,6 +19,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+          <form [formGroup]="loginForm"  >
             <div class="card card-login card-hidden">
               <div class="card-heade card-header-primar text-center" style=" background-color: #f44336 !important">
                 <h4 class="card-title" >Login To CLICK AGENCY</h4>
@@ -32,7 +33,18 @@
                         <i class="material-icons">email</i>
                       </span>
                     </div>
-                    <input type="email" [(ngModel)]="email" class="form-control" placeholder="Email...">
+                     <input type="text"
+                     [ngClass]="{'form-control': true,
+                     'is-invalid': !username.valid && username.touched,
+                     'is-valid': username.valid}"
+                      formControlName="username"
+                     class="form-control" 
+                     
+                     placeholder="Enter Username">
+                     <small *ngIf="username.errors?.required && username.touched"
+                   class="form-text custom-invalid-feedback" style="color: red;text-align: center;">
+                   Field is required
+                 </small>
                   </div>
                 </span>
                 <br>
@@ -43,17 +55,31 @@
                         <i class="material-icons">lock_outline</i>
                       </span>
                     </div>
-                    <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password...">
+              
+                    <input type="password" 
+                    [ngClass]="{'form-control': true,
+                    'is-invalid': !password.valid && password.touched,
+                    'is-valid': password.valid}"
+                    formControlName="password"
+                    placeholder="Enter Password"
+                    class="form-control"
+                    >
+                    <small *ngIf="password.errors?.required && password.touched"
+                    class="form-text custom-invalid-feedback" style="color: red;text-align: center;">
+                    Field is required
+                  </small>
                   </div>
+
                 </span>
               </div>
               <span style="color:#f44336" class="text-center">
                   Forgot Your Password? <a routerLink="/forget"> Click Here</a>
               </span>
               <div class="card-footer justify-content-center">
-                <a (click)="navigateToDashboard()" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+                <a (click)="login()" class="btn btn-rose btn-link btn-lg">Lets Go</a>
               </div>
             </div>
+            </form>
         </div>
       </div>
     </div>
