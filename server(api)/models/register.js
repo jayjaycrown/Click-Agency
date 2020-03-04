@@ -35,4 +35,6 @@ const registerSchema = new Schema({
 
 const register = mongoose.model('register', registerSchema)
 
+mongoose.set('useFindAndModify', false);
+
 module.exports = register
