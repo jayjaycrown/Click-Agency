@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
-import {RegisterComponent}  from  './register/register.component';
+import {RegisterComponent} from './register/register.component';
 import { ForgetComponent } from './forget/forget.component';
 const routes: Routes = [
   {
