@@ -19,6 +19,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+          <form [formGroup]="forgetForm" >
             <div class="card card-login card-hidden">
               <div class="card-heade card-header-primar text-center" style=" background-color: #f44336 !important">
                 <h4 class="card-title" >Forget Password</h4>
@@ -38,16 +39,29 @@
                         <i class="material-icons">email</i>
                       </span>
                     </div>
-                    <input type="email" [(ngModel)]="email" class="form-control" placeholder="Email...">
+                    <input type="email" class="form-control"
+                    [email]="true" #emailInput 
+                                              [ngClass]="{
+                                                'form-control': true,
+                                              'is-invalid': !email.valid && email.touched,
+                                              'is-valid': email.valid}"
+                                               formControlName="email"
+                                                placeholder="test@gmail.com">
+                                                <br>
+                                                <small *ngIf="email.errors?.required && email.touched"
+                                                class="form-text custom-invalid-feedback" style="color: red;text-align: center;">
+                                                Field is required
+                                              </small>
                   </div>
                 </span>
                 <br>
               </div>
               
               <div class="card-footer justify-content-center">
-                <a (click)="navigateToDashboard()" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+                <a (click)="forget()" class="btn btn-rose btn-link btn-lg">Lets Go</a>
               </div>
             </div>
+          </form>
         </div>
       </div>
     </div>
