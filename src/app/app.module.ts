@@ -1,4 +1,6 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -26,11 +28,19 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgetComponent } from './forget/forget.component';
+import { AuthService } from './providers/auth.service';
 
 
 @NgModule({
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        positionClass: 'top-left',
+        closeButton: true
+      }
+    ),
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -51,7 +61,7 @@ import { ForgetComponent } from './forget/forget.component';
     ForgetComponent,
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

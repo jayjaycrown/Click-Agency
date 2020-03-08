@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-          <!-- <form class="form" > -->
+          <form [formGroup]="regForm"  >
             <div class="card card-login card-hidden">
               <div class="card-heade card-header-primar text-center" style=" background-color: #f44336 !important">
                 <h4 class="card-title" >Register On CLICK AGENCY</h4>
@@ -31,7 +31,20 @@
                           <i class="material-icons"> face</i>
                         </span>
                       </div>
-                      <input type="text" [(ngModel)]="username" class="form-control" placeholder="Enter Username">
+                      <input type="text" formControlName="username"
+                      [ngClass]="{'form-control': true,
+                      'is-invalid': !username.valid && username.touched,
+                      'is-valid': username.valid}"
+                        class="form-control" placeholder="Enter Username">
+                        <br>
+                      <small *ngIf="username.errors?.required && username.touched"
+                      class="form-text custom-invalid-feedback" style="color: red;text-align: center;">
+                      Field is required
+                    </small>
+                    <small *ngIf="username.errors?.minlength && username.touched" 
+                     class="form-text custom-invalid-feedback" style="color: red; text-align: center;">
+                      Username should be atleast 5 characters.
+                    </small>
                     </div>
                   </span>
                   <br>
@@ -42,7 +55,20 @@
                         <i class="material-icons">email</i>
                       </span>
                     </div>
-                    <input type="email" class="form-control" [(ngModel)]="email" placeholder="test@gmail.com">
+                    <input type="email" class="form-control"
+                    [email]="true" #emailInput 
+                                              [ngClass]="{
+                                                'form-control': true,
+                                              'is-invalid': !email.valid && email.touched,
+                                              'is-valid': email.valid}"
+                                               formControlName="email"
+                                                placeholder="test@gmail.com">
+                                                <br>
+                                                <small *ngIf="email.errors?.required && email.touched"
+                                                class="form-text custom-invalid-feedback" style="color: red;text-align: center;">
+                                                Field is required
+                                              </small>
+                                              
                   </div>
                 </span>
                 <br>
@@ -54,7 +80,17 @@
                         <i class="material-icons">lock_outline</i>
                       </span>
                     </div>
-                    <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password...">
+                    <input type="password"
+                    [ngClass]="{'form-control': true,
+                    'is-invalid': !password.valid && password.touched,
+                    'is-valid': password.valid}"
+                    formControlName="password"
+                    class="form-control" class="form-control" placeholder="Password...">
+                    <br>
+                    <span class="custom-alert" style="color: red; text-align: center;"
+                                              *ngIf="!regForm.controls['password'].valid && regForm.controls['password'].touched">
+                                               <small style="color: red; text-align: center;">Password must be a minimum of 3 characters</small> 
+                                               </span>
                   </div>
                 </span>
                 <br>
@@ -65,16 +101,27 @@
                           <i class="material-icons">lock_outline</i>
                         </span>
                       </div>
-                      <input type="password" [(ngModel)]="cpassword" class="form-control" placeholder="Confirm Password...">
+                      <input type="password" [ngClass]="{
+                                                    
+                        'is-invalid': !confirmPassword.valid && confirmPassword.touched,
+                        'is-valid': confirmPassword.valid}"
+                             formControlName="confirmPassword" class="form-control" 
+                             placeholder="Confirm Password...">
+                             <br>
+                             <span class="custom-alert"
+                                                        *ngIf="regForm.touched 
+                                                        && regForm.controls['confirmPassword'].invalid" style="color: red; text-align: center;">
+                                                     <small style="color: red; text-align: center;">Password and confirm password does not match</small> 
+                      </span>
                     </div>
                 </span>
                  <br>
               </div>
               <div class="card-footer justify-content-center">
-                <a (click)="register()" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+                <a  (click)="register()"  class="btn btn-rose btn-link btn-lg">Lets Go</a>
               </div>
             </div>
-          <!-- </form> -->
+          </form>
         </div>
       </div>
     </div>
